@@ -1,0 +1,1 @@
+export { WhatChangesSection } from './WhatChangesSection';

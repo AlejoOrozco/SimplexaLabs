@@ -1,0 +1,1 @@
+export { CtaBorderWrap } from './CtaBorderWrap';

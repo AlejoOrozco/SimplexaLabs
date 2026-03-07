@@ -1,0 +1,5 @@
+/* Placeholder reserves scroll space until section loads */
+.lazy-section__placeholder {
+  min-height: 50vh;
+  /* Prevent layout shift; section will replace this when mounted */
+}

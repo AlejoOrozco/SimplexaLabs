@@ -1,0 +1,58 @@
+/**
+ * Header: fixed bar with backdrop blur (no liquid glass).
+ */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--header-height);
+}
+
+.header__bar {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: var(--header-backdrop);
+  -webkit-backdrop-filter: var(--header-backdrop);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.header__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Title: gradient text. Left/transform are set by useScrollLinkedTitle for smooth scroll-linked motion */
+.header__title {
+  margin: 0;
+  font-size: 1.875rem;
+  font-weight: 700;
+  background: var(--color-cta-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: absolute;
+  /* left and transform set in JS for 60fps compositor-driven movement */
+}
+
+.header__cta-wrap {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.header__cta {
+  position: relative;
+  z-index: 1;
+  border: none;
+}

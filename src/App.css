@@ -1,0 +1,5 @@
+/* App-level layout only; section styles live in each section folder */
+
+main {
+  min-height: 100vh;
+}

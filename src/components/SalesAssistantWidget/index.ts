@@ -1,0 +1,2 @@
+export { SalesAssistantWidget } from './SalesAssistantWidget';
+

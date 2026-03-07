@@ -1,0 +1,107 @@
+.what-changes {
+  padding: 4rem 1.5rem;
+  background: var(--color-bg-section);
+}
+
+.what-changes__container {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.what-changes__title {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 2rem;
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+/* Dot grid behind cards */
+.what-changes__dot-grid {
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.04) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+.what-changes__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .what-changes__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .what-changes__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Shimmer sweep on card hover */
+.what-changes-card__shimmer {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  width: 55%;
+  transform: translateX(-100%) skewX(-12deg);
+  transition: transform 0.7s ease-out;
+}
+
+.what-changes-card.group:hover .what-changes-card__shimmer {
+  transform: translateX(280%) skewX(-12deg);
+}
+
+/* Card: page-style background and text (guaranteed contrast) */
+.what-changes-card {
+  background: #ffffff;
+  border: 1px solid rgba(30, 58, 95, 0.12);
+  box-shadow: 0 2px 12px rgba(30, 58, 95, 0.06);
+}
+
+.what-changes-card:hover {
+  border-color: rgba(30, 58, 95, 0.2);
+}
+
+.what-changes-card__icon-badge {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+}
+
+.what-changes-card__title {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+}
+
+.what-changes-card__description {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}

@@ -1,0 +1,2 @@
+export { ShimmerText } from './ShimmerText';
+

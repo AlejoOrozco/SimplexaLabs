@@ -1,0 +1,10 @@
+export { HeroSection } from './HeroSection';
+export { PainPointsSection } from './PainPointsSection';
+export { AssistantIntroSection } from './AssistantIntroSection';
+export { AutomationChannelsSection } from './AutomationChannelsSection';
+export { WhatChangesSection } from './WhatChangesSection';
+export { ThreeStepsSection } from './ThreeStepsSection';
+export { WhyChooseSection } from './WhyChooseSection';
+export { TestimonialsSection } from './TestimonialsSection';
+export { FAQSection } from './FAQSection';
+export { CTASection } from './CTASection';

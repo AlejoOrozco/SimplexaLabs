@@ -1,0 +1,71 @@
+/**
+ * Shared CTA button styles: gradient fill + stripe that travels the full border path.
+ * Border is static (blue–purple gradient). Stripe is an SVG stroke animated with stroke-dashoffset.
+ */
+
+@keyframes cta-stripe-dash {
+  to {
+    stroke-dashoffset: -466;
+  }
+}
+
+.cta-border-wrap {
+  position: relative;
+  display: inline-flex;
+  border-radius: 10px;
+  padding: 2px;
+  /* Static gradient border */
+  background: conic-gradient(
+    from 0deg,
+    var(--color-azul-electrico) 0deg,
+    var(--color-morado-ai) 180deg,
+    var(--color-azul-electrico) 360deg
+  );
+}
+
+/* SVG stripe follows the full rounded-rect border path */
+.cta-border-stripe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cta-border-stripe rect {
+  animation: cta-stripe-dash 2.5s linear infinite;
+}
+
+.cta-border-wrap .cta-gradient-fill {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  background: var(--color-cta-gradient);
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.cta-border-wrap .cta-gradient-fill:hover {
+  opacity: 0.95;
+  filter: brightness(1.05);
+}
+
+/* Outline variant */
+.cta-border-wrap--outline .cta-gradient-fill {
+  background: var(--color-blanco-limpio);
+  color: var(--color-azul-electrico);
+}
+
+.cta-border-wrap--outline .cta-gradient-fill:hover {
+  background: var(--color-azul-neon);
+  color: var(--color-morado-ai);
+}

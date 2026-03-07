@@ -1,0 +1,124 @@
+.testimonials {
+  padding: 4rem 1.5rem;
+  background: var(--color-blanco-limpio);
+}
+
+.testimonials__container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.testimonials__title {
+  margin: 0 0 2rem;
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+/* Marquee: auto-scrolling cards (right → left) */
+.testimonials__marquee {
+  position: relative;
+  overflow: hidden;
+  padding: 0.25rem 0;
+  /* fade edges */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.testimonials__track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  animation: testimonials-marquee 250s linear infinite;
+}
+
+.testimonials__group {
+  display: flex;
+  gap: 1rem;
+}
+
+.testimonials__marquee:hover .testimonials__track {
+  animation-play-state: paused;
+}
+
+@keyframes testimonials-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials__track {
+    animation: none;
+  }
+
+  .testimonials__marquee {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .testimonials__marquee::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testimonials__card {
+    scroll-snap-align: start;
+  }
+}
+
+.testimonials__card {
+  flex: 0 0 auto;
+  width: min(360px, 82vw);
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(30, 58, 95, 0.08);
+}
+
+.testimonials__stars {
+  color: #eab308;
+  font-size: 1.125rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+.testimonials__quote {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+.testimonials__name {
+  margin: 0 0 0.25rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.testimonials__role {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}

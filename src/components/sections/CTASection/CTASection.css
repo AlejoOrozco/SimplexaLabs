@@ -1,0 +1,79 @@
+.cta-section {
+  padding: 4rem 1.5rem;
+  background: var(--color-azul-profundo);
+}
+
+.cta-section__container {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cta-section__title {
+  margin: 0 0 1rem;
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #fff;
+}
+
+.cta-section__paragraph {
+  margin: 0 0 1.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-section__button-wrap {
+  margin-bottom: 1.5rem;
+}
+
+.cta-section__button-wrap .cta-gradient-fill {
+  background: #fff !important;
+  color: var(--color-azul-electrico) !important;
+}
+
+.cta-section__button-wrap .cta-gradient-fill:hover {
+  background: var(--color-blanco-limpio) !important;
+  color: var(--color-azul-profundo) !important;
+}
+
+.cta-section__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+}
+
+.cta-section__benefits {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  justify-content: center;
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-section__benefits li {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.cta-section__check {
+  color: var(--color-azul-neon);
+  font-weight: 700;
+}
+
+.cta-section__tagline {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.8);
+}

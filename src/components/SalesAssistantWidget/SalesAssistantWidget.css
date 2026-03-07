@@ -1,0 +1,200 @@
+.sales-assistant {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 200;
+  font-family: inherit;
+}
+
+.sales-assistant__teaser-bubble {
+  max-width: 220px;
+  padding: 0.55rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.94);
+  color: #e5f0ff;
+  font-size: 0.78rem;
+  font-weight: 500;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.35);
+}
+
+.sales-assistant__fab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(30, 58, 95, 0.14);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(130%) blur(6px);
+  -webkit-backdrop-filter: saturate(130%) blur(6px);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.sales-assistant__fab-text {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.sales-assistant__panel {
+  width: min(360px, calc(100vw - 32px));
+  height: min(560px, calc(100vh - 32px));
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  border: 1px solid rgba(30, 58, 95, 0.14);
+  border-radius: 18px;
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.22);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.sales-assistant__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 0.9rem;
+  border-bottom: 1px solid rgba(30, 58, 95, 0.08);
+}
+
+.sales-assistant__title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sales-assistant__badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: var(--color-cta-gradient);
+}
+
+.sales-assistant__name {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.sales-assistant__subtitle {
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+}
+
+.sales-assistant__close {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(30, 58, 95, 0.12);
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  color: var(--color-text-primary);
+}
+
+.sales-assistant__messages {
+  padding: 0.9rem;
+  overflow: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.sales-assistant__msg {
+  display: flex;
+}
+
+.sales-assistant__msg--user {
+  justify-content: flex-end;
+}
+
+.sales-assistant__msg--assistant {
+  justify-content: flex-start;
+}
+
+.sales-assistant__bubble {
+  max-width: 85%;
+  padding: 0.7rem 0.8rem;
+  border-radius: 14px;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  white-space: pre-wrap;
+  border: 1px solid rgba(30, 58, 95, 0.1);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
+
+.sales-assistant__msg--assistant .sales-assistant__bubble {
+  background: #fff;
+  color: var(--color-text-primary);
+}
+
+.sales-assistant__msg--user .sales-assistant__bubble {
+  background: var(--color-cta-gradient);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+.sales-assistant__composer {
+  padding: 0.85rem 0.9rem;
+  border-top: 1px solid rgba(30, 58, 95, 0.08);
+  background: rgba(248, 250, 252, 0.7);
+}
+
+.sales-assistant__row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.sales-assistant__input {
+  flex: 1;
+  height: 40px;
+  padding: 0 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(30, 58, 95, 0.14);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-text-primary);
+  outline: none;
+}
+
+.sales-assistant__input:focus {
+  border-color: rgba(37, 99, 235, 0.45);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.sales-assistant__send {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  background: var(--color-cta-gradient);
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sales-assistant__send:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sales-assistant__hint {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.sales-assistant__error {
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  color: #b91c1c;
+}
+

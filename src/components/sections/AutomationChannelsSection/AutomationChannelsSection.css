@@ -1,0 +1,74 @@
+.automation-channels {
+  position: relative;
+  padding: 4rem 1.5rem;
+  overflow: hidden;
+}
+
+/* Animated gradient background so liquid glass cards are visible */
+.automation-channels__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    135deg,
+    #e0f2fe 0%,
+    #f0e7ff 25%,
+    #e0f2fe 50%,
+    #ddd6fe 75%,
+    #e0f2fe 100%
+  );
+  background-size: 400% 400%;
+  animation: automation-channels-bg 15s ease infinite;
+}
+
+@keyframes automation-channels-bg {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.automation-channels__container {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.automation-channels__title {
+  margin: 0 0 2rem;
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+.automation-channels__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.automation-channels__card {
+  height: 100%;
+  min-height: 100%;
+}
+
+.automation-channels__card .automation-channels__icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.automation-channels__card-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.automation-channels__card-desc {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
