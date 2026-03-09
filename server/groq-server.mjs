@@ -74,7 +74,6 @@ const server = http.createServer(async (req, res) => {
       };
 
       if (process.env.NODE_ENV !== 'production') {
-        // eslint-disable-next-line no-console
         console.log(
           'Groq chat payload:',
           JSON.stringify(
@@ -108,14 +107,12 @@ const server = http.createServer(async (req, res) => {
 
     return json(res, 404, { error: 'Not found' });
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.error(err);
     return json(res, 500, { error: 'Server error' });
   }
 });
 
 server.listen(PORT, () => {
-  // eslint-disable-next-line no-console
   console.log(`Groq server listening on http://localhost:${PORT}`);
 });
 

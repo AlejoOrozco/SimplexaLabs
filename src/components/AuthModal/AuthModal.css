@@ -1,0 +1,119 @@
+.auth-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(30, 58, 95, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: auth-modal-fade-in 0.2s ease;
+}
+
+@keyframes auth-modal-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.auth-modal {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-blanco-limpio);
+  border-radius: 12px;
+  box-shadow: 0 20px 48px rgba(30, 58, 95, 0.2);
+  padding: 1.75rem;
+  animation: auth-modal-slide-in 0.25s ease;
+}
+
+@keyframes auth-modal-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.auth-modal__close:hover {
+  color: var(--color-text-primary);
+  background: rgba(30, 58, 95, 0.08);
+}
+
+.auth-modal__title {
+  margin: 0 0 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.auth-modal__subtitle {
+  margin: 0 0 1.25rem;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+}
+
+.auth-modal__google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  background: #fff;
+  border: 1px solid rgba(30, 58, 95, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.auth-modal__google-btn:hover {
+  border-color: rgba(30, 58, 95, 0.35);
+  background: rgba(30, 58, 95, 0.02);
+  box-shadow: 0 2px 8px rgba(30, 58, 95, 0.08);
+}
+
+.auth-modal__google-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.auth-modal__error {
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-accent-error);
+  background: rgba(220, 38, 38, 0.08);
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}

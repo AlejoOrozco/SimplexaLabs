@@ -15,8 +15,15 @@ export function useScrollLinkedTitle(
   useEffect(() => {
     const title = titleRef.current;
     const container = containerRef.current;
+    if (!title || !container) return;
+    if (!sectionId) {
+      title.style.left = '';
+      title.style.transform = '';
+      title.style.willChange = '';
+      return;
+    }
     const section = document.getElementById(sectionId);
-    if (!title || !container || !section) return;
+    if (!section) return;
 
     let rafId: number;
 

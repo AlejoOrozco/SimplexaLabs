@@ -1,0 +1,11 @@
+.dashboard-layout {
+  display: flex;
+  min-height: calc(100vh - var(--header-height));
+  padding-top: var(--header-height);
+}
+
+.dashboard-layout__main {
+  flex: 1;
+  min-width: 0;
+  background: var(--color-bg-section);
+}

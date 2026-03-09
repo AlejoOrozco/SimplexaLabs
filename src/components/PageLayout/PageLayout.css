@@ -1,0 +1,33 @@
+/**
+ * Shared page layout for all dashboard pages.
+ * Use the same padding, max-width, and spacing everywhere.
+ */
+.page-layout {
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: var(--page-padding-block) var(--page-padding-inline);
+  min-height: 100%;
+}
+
+.page-layout--narrow {
+  max-width: var(--page-max-width-narrow);
+}
+
+.page-layout__header {
+  margin-bottom: var(--page-header-margin-bottom);
+}
+
+.page-layout__title {
+  margin: 0 0 0.25rem;
+  font-size: var(--page-title-size);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.page-layout__subtitle {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+}
+

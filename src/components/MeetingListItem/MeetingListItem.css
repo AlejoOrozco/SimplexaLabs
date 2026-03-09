@@ -1,0 +1,48 @@
+.meeting-list-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  border: 1px solid rgba(30, 58, 95, 0.12);
+  border-radius: 8px;
+  font-size: 0.875rem;
+}
+
+.meeting-list-item__date {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.meeting-list-item__guest {
+  color: var(--color-text-primary);
+}
+
+.meeting-list-item__status {
+  margin-left: auto;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.meeting-list-item__status--pending {
+  background: rgba(234, 179, 8, 0.15);
+  color: #a16207;
+}
+
+.meeting-list-item__status--confirmed {
+  background: rgba(34, 197, 94, 0.15);
+  color: #15803d;
+}
+
+.meeting-list-item__status--cancelled {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--color-accent-error);
+}
+
+.meeting-list-item__status--completed {
+  background: rgba(30, 58, 95, 0.08);
+  color: var(--color-text-secondary);
+}

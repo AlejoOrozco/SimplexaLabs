@@ -1,0 +1,59 @@
+.invitations-loading-text,
+.invitations-forbidden-text {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+}
+
+.invitations-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.invitations-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.invitations-input,
+.invitations-select {
+  padding: 0.625rem 0.75rem;
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  background: #fff;
+  border: 1px solid rgba(30, 58, 95, 0.2);
+  border-radius: 8px;
+}
+
+.invitations-input:focus,
+.invitations-select:focus {
+  outline: none;
+  border-color: var(--color-azul-electrico);
+}
+
+.invitations-submit {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-cta-gradient);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.invitations-submit:hover:not(:disabled) {
+  opacity: 0.95;
+}
+
+.invitations-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

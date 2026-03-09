@@ -1,29 +1,31 @@
-import { useRef } from 'react';
-import { useScrollLinkedTitle } from '../../hooks/useScrollLinkedTitle';
-import { CtaBorderWrap } from '../CtaBorderWrap';
-import './Header.css';
+import { useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { useScrollLinkedTitle } from "../../hooks/useScrollLinkedTitle";
+import { HeaderLogo } from "./HeaderLogo";
+import { HeaderCta } from "./HeaderCta";
+import "./Header.css";
 
-const HERO_SECTION_ID = 'section-hero';
+const HERO_SECTION_ID = "section-hero";
 
 export function Header() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
-  useScrollLinkedTitle(HERO_SECTION_ID, titleRef, innerRef);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  useScrollLinkedTitle(isHome ? HERO_SECTION_ID : "", titleRef, innerRef);
 
   return (
     <header className="header">
       <div className="header__bar">
         <div ref={innerRef} className="header__inner">
-          <h1 ref={titleRef} className="header__title">
-            SimpLexaLabs
-          </h1>
-          <span className="header__cta-wrap">
-            <CtaBorderWrap>
-              <a href="#demo" className="header__cta cta-gradient-fill">
-                Reservar Demo
-              </a>
-            </CtaBorderWrap>
-          </span>
+          <HeaderLogo title="SimpLexaLabs" titleRef={titleRef} />
+          <HeaderCta
+            onAuthModalOpen={() => setAuthModalOpen(true)}
+            authModalOpen={authModalOpen}
+            onAuthModalClose={() => setAuthModalOpen(false)}
+          />
         </div>
       </div>
     </header>

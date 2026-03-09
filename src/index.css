@@ -7,6 +7,13 @@
   /* Sileo toast sizing (responsive) */
   --sileo-width: min(380px, calc(100vw - 32px));
   --sileo-height: 48px;
+
+  --page-padding-block: 2rem;
+  --page-padding-inline: 2rem;
+  --page-max-width: 900px;
+  --page-max-width-narrow: 480px;
+  --page-header-margin-bottom: 1.5rem;
+  --page-title-size: 1.5rem;
 }
 
 /* Slightly larger toast typography */
