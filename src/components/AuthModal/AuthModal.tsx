@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
+import { sileo } from "sileo";
 import { useAuth } from "../../hooks/useAuth";
 import "./AuthModal.css";
 
@@ -38,20 +39,20 @@ function GoogleIcon() {
 
 export function AuthModal({ isOpen, onClose }: Props) {
   const navigate = useNavigate();
-  const { user, signInWithGoogle, error, clearError } = useAuth();
+  const { user, profile, signInWithGoogle, error, clearError } = useAuth();
 
   const handleClose = useCallback(() => {
     clearError();
     onClose();
   }, [onClose, clearError]);
 
-  // Redirect when user logs in (handles COOP errors where promise rejects but auth succeeds)
+  // Redirect only when user is fully registered (has profile).
   useEffect(() => {
-    if (isOpen && user) {
+    if (isOpen && user && profile) {
       onClose();
       navigate("/meetings");
     }
-  }, [isOpen, user, onClose, navigate]);
+  }, [isOpen, user, profile, onClose, navigate]);
 
   const handleGoogleClick = useCallback(async () => {
     clearError();
@@ -60,7 +61,11 @@ export function AuthModal({ isOpen, onClose }: Props) {
       handleClose();
       navigate("/meetings");
     } catch {
-      // Error shown via AuthContext
+      sileo.error({
+        title: "Acceso no autorizado",
+        description: "No estás reconocido como usuario. Si fuiste invitado, usa el correo con el que te invitaron. Si no, contacta al administrador.",
+      });
+      handleClose();
     }
   }, [signInWithGoogle, handleClose, clearError, navigate]);
 

@@ -1,0 +1,147 @@
+.meeting-detail-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(30, 58, 95, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.meeting-detail-modal {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--color-blanco-limpio);
+  border-radius: 12px;
+  box-shadow: 0 20px 48px rgba(30, 58, 95, 0.2);
+  padding: 1.75rem;
+}
+
+.meeting-detail-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.meeting-detail-close:hover {
+  color: var(--color-text-primary);
+  background: rgba(30, 58, 95, 0.08);
+}
+
+.meeting-detail-title {
+  margin: 0 0 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.meeting-detail-list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.meeting-detail-row {
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid rgba(30, 58, 95, 0.08);
+}
+
+.meeting-detail-row:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.meeting-detail-row dt {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+}
+
+.meeting-detail-row dd {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  word-break: break-word;
+}
+
+.meeting-detail-row--muted dd {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+
+.meeting-detail-status {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.meeting-detail-status--pending {
+  background: rgba(245, 158, 11, 0.15);
+  color: #b45309;
+}
+
+.meeting-detail-status--confirmed {
+  background: rgba(34, 197, 94, 0.15);
+  color: #15803d;
+}
+
+.meeting-detail-status--cancelled {
+  background: rgba(239, 68, 68, 0.15);
+  color: #b91c1c;
+}
+
+.meeting-detail-status--completed {
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--color-azul-electrico);
+}
+
+.meeting-detail-empty {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+}
+
+.meeting-detail-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.meeting-detail-btn {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  background: rgba(30, 58, 95, 0.08);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.meeting-detail-btn:hover {
+  background: rgba(30, 58, 95, 0.12);
+}

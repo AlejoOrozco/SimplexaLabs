@@ -38,7 +38,7 @@
   color: inherit;
 }
 
-/* Title: gradient text. Left/transform are set by useScrollLinkedTitle for smooth scroll-linked motion */
+/* Title: gradient text. Left/transform set by useScrollLinkedTitle for smooth scroll-linked motion */
 .header__title {
   margin: 0;
   font-size: 1.875rem;
@@ -48,7 +48,9 @@
   background-clip: text;
   color: transparent;
   position: absolute;
-  /* left and transform set in JS for 60fps compositor-driven movement */
+  top: 50%;
+  transform: translateY(-50%);
+  /* left and transform (translateX) set in JS for 60fps compositor-driven movement */
 }
 
 .header__cta-wrap {
@@ -120,22 +122,6 @@
   transition: color 0.2s ease;
 }
 
-.header__login-link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0.125rem;
-  height: 1px;
-  background: var(--color-cta-gradient);
-  opacity: 0.5;
-  transition: opacity 0.2s ease;
-}
-
 .header__login-link:hover {
   color: var(--color-morado-ai);
-}
-
-.header__login-link:hover::after {
-  opacity: 1;
 }

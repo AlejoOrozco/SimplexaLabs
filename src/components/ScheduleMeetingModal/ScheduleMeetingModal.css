@@ -1,0 +1,144 @@
+.schedule-meeting-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(30, 58, 95, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.schedule-meeting-modal {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--color-blanco-limpio);
+  border-radius: 12px;
+  box-shadow: 0 20px 48px rgba(30, 58, 95, 0.2);
+  padding: 1.75rem;
+}
+
+.schedule-meeting-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.schedule-meeting-close:hover {
+  color: var(--color-text-primary);
+  background: rgba(30, 58, 95, 0.08);
+}
+
+.schedule-meeting-title {
+  margin: 0 0 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.schedule-meeting-subtitle {
+  margin: 0 0 1.25rem;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.schedule-meeting-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.schedule-meeting-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.schedule-meeting-optional {
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+.schedule-meeting-input {
+  padding: 0.625rem 0.75rem;
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  background: #fff;
+  border: 1px solid rgba(30, 58, 95, 0.2);
+  border-radius: 8px;
+}
+
+.schedule-meeting-input:focus {
+  outline: none;
+  border-color: var(--color-azul-electrico);
+}
+
+.schedule-meeting-textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.schedule-meeting-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.schedule-meeting-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.schedule-meeting-btn {
+  padding: 0.625rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+.schedule-meeting-btn--primary {
+  background: var(--color-cta-gradient);
+  color: #fff;
+}
+
+.schedule-meeting-btn--primary:hover:not(:disabled) {
+  opacity: 0.95;
+}
+
+.schedule-meeting-btn--primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.schedule-meeting-btn--secondary {
+  background: rgba(30, 58, 95, 0.08);
+  color: var(--color-text-primary);
+}
+
+.schedule-meeting-btn--secondary:hover {
+  background: rgba(30, 58, 95, 0.12);
+}

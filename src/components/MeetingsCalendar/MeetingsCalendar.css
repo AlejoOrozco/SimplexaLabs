@@ -1,0 +1,198 @@
+/* Custom meetings calendar — matches app design, clean grid, full-cell hover */
+
+.meetings-calendar {
+  --cal-border: rgba(30, 58, 95, 0.12);
+  --cal-today-bg: rgba(37, 99, 235, 0.06);
+  --cal-event-bg: rgba(37, 99, 235, 0.12);
+  --cal-event-border: var(--color-azul-electrico);
+  --cal-off-bg: rgba(30, 58, 95, 0.06);
+  --cal-off-text: rgba(30, 58, 95, 0.5);
+  --cal-hover: rgba(37, 99, 235, 0.05);
+
+  height: 100%;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-section);
+  border-radius: 12px;
+  border: 1px solid var(--cal-border);
+  overflow: hidden;
+}
+
+/* Toolbar: nav + title grouped on the left to avoid empty top-right space */
+.meetings-calendar__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--cal-border);
+  background: #fff;
+}
+
+.meetings-calendar__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.meetings-calendar__btn {
+  padding: 0.5rem 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  background: #fff;
+  border: 1px solid var(--cal-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.meetings-calendar__btn:hover {
+  background: var(--cal-hover);
+  border-color: var(--color-azul-electrico);
+}
+
+.meetings-calendar__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+/* Grid */
+.meetings-calendar__grid-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.meetings-calendar__headers {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #fff;
+  border-bottom: 1px solid var(--cal-border);
+}
+
+.meetings-calendar__header {
+  padding: 0.625rem 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meetings-calendar__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: auto;
+}
+
+.meetings-calendar__row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  flex: 1;
+  min-height: 96px;
+}
+
+.meetings-calendar__cell {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0.375rem;
+  border-right: 1px solid var(--cal-border);
+  border-bottom: 1px solid var(--cal-border);
+  background: #fff;
+  transition: background 0.12s ease;
+}
+
+.meetings-calendar__cell:nth-child(7n) {
+  border-right: none;
+}
+
+.meetings-calendar__cell--off {
+  background: var(--cal-off-bg);
+}
+
+.meetings-calendar__cell--off .meetings-calendar__day-num {
+  color: var(--cal-off-text);
+}
+
+.meetings-calendar__cell--today {
+  background: var(--cal-today-bg);
+}
+
+.meetings-calendar__cell--today .meetings-calendar__day-num {
+  font-weight: 700;
+  color: var(--color-azul-electrico);
+}
+
+.meetings-calendar--selectable .meetings-calendar__cell--selectable {
+  cursor: pointer;
+}
+
+.meetings-calendar--selectable .meetings-calendar__cell--selectable:hover {
+  background: var(--cal-hover);
+}
+
+.meetings-calendar__day-num {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  text-align: right;
+  margin-bottom: 0.25rem;
+  flex-shrink: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meetings-calendar__events {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.meetings-calendar__event {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 0.25rem 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--color-text-primary);
+  background: var(--cal-event-bg);
+  border: none;
+  border-left: 3px solid var(--cal-event-border);
+  border-radius: 4px;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: background 0.12s ease, filter 0.12s ease;
+}
+
+.meetings-calendar__event:hover {
+  background: rgba(37, 99, 235, 0.18);
+  filter: brightness(0.98);
+}
+
+.meetings-calendar__more {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--color-azul-electrico);
+  padding: 0.125rem 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

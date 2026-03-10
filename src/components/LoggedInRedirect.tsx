@@ -8,7 +8,7 @@ type Props = { children: React.ReactNode; to: string };
  * Otherwise renders children.
  */
 export function LoggedInRedirect({ children, to }: Props) {
-  const { user, loading } = useAuth();
+  const { user, profile, loading } = useAuth();
 
   if (loading) {
     return (
@@ -25,7 +25,7 @@ export function LoggedInRedirect({ children, to }: Props) {
     );
   }
 
-  if (user) {
+  if (user && profile) {
     return <Navigate to={to} replace />;
   }
 

@@ -12,12 +12,16 @@ const DEFAULT_LIMIT = 50;
  * No data is fetched from Auth — only from Firestore, keyed by uid.
  *
  */
-export function useMeetings(uid: string | undefined, options?: { limitCount?: number }) {
+export function useMeetings(
+  uid: string | undefined,
+  options?: { limitCount?: number; refreshKey?: number }
+) {
   const [meetings, setMeetings] = useState<Meeting[]>([]);
   const [loading, setLoading] = useState(!!uid);
   const [error, setError] = useState<Error | null>(null);
 
   const limitCount = options?.limitCount ?? DEFAULT_LIMIT;
+  const refreshKey = options?.refreshKey ?? 0;
 
   useEffect(() => {
     if (!uid) return;
@@ -78,7 +82,7 @@ export function useMeetings(uid: string | undefined, options?: { limitCount?: nu
     return () => {
       cancelled = true;
     };
-  }, [uid, limitCount]);
+  }, [uid, limitCount, refreshKey]);
 
   if (!uid) {
     return { meetings: [], loading: false, error: null };

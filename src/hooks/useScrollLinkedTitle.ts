@@ -18,8 +18,8 @@ export function useScrollLinkedTitle(
     if (!title || !container) return;
     if (!sectionId) {
       title.style.left = '';
-      title.style.transform = '';
       title.style.willChange = '';
+      title.style.transform = 'translateY(-50%)';
       return;
     }
     const section = document.getElementById(sectionId);
@@ -43,7 +43,7 @@ export function useScrollLinkedTitle(
       const centerOffset = containerWidth / 2 - TITLE_LEFT_PX - titleWidth / 2;
 
       const translateX = progress * centerOffset;
-      titleEl.style.transform = `translateX(${translateX}px)`;
+      titleEl.style.transform = `translate(${translateX}px, -50%)`;
     }
 
     function onScroll() {
@@ -52,6 +52,7 @@ export function useScrollLinkedTitle(
     }
 
     title.style.left = `${TITLE_LEFT_PX}px`;
+    title.style.transform = `translateY(-50%)`;
     title.style.willChange = 'transform';
     update();
 

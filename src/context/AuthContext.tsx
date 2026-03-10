@@ -12,6 +12,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  deleteUser,
   signOut as firebaseSignOut,
   onAuthStateChanged,
   type User,
@@ -122,6 +123,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return snap.docs[0] ?? null;
   }, []);
 
+  const loadProfile = useCallback(
+    (data: Record<string, unknown>): UserProfile => {
+      const rawLastName = data.lastName ?? data.lastname;
+      return {
+        name: String(data.name ?? ""),
+        lastName: typeof rawLastName === "string" ? rawLastName : "",
+        email: String(data.email ?? ""),
+        companyName: typeof data.companyName === "string" ? data.companyName : undefined,
+        plan: (data.plan as Plan) ?? "free",
+        role: (data.role as UserRole) ?? "user",
+        createdAt: (data.createdAt as { toDate?: () => Date })?.toDate?.() ?? new Date(),
+        updatedAt: (data.updatedAt as { toDate?: () => Date })?.toDate?.() ?? new Date(),
+        socialMedias: Array.isArray(data.socialMedias) ? (data.socialMedias as UserProfile["socialMedias"]) : [],
+      };
+    },
+    []
+  );
+
   const signInWithGoogle = useCallback(async () => {
     setError(null);
     try {
@@ -148,9 +167,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           status: "accepted",
           updatedAt: serverTimestamp(),
         });
+        const newSnap = await getDoc(userRef);
+        if (newSnap.exists()) {
+          setProfile(loadProfile(newSnap.data()));
+        }
       } else {
-        await firebaseSignOut(auth);
-        setError("No tienes acceso. Si fuiste invitado, usa el correo correcto. Si no, contacta al administrador.");
+        await deleteUser(newUser);
+        const message = "No tienes acceso. Si fuiste invitado, usa el correo correcto. Si no, contacta al administrador.";
+        setError(message);
+        throw new Error(message);
       }
     } catch (err) {
       const message =
@@ -160,7 +185,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setError(message);
       throw err;
     }
-  }, [findPendingInvite, createUserFromInvite]);
+  }, [findPendingInvite, createUserFromInvite, loadProfile]);
 
   const signUp = useCallback(
     async (params: {
@@ -225,24 +250,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // Avoids any stale user/profile data being reused.
     window.location.replace("/");
   }, []);
-
-  const loadProfile = useCallback(
-    (data: Record<string, unknown>): UserProfile => {
-      const rawLastName = data.lastName ?? data.lastname;
-      return {
-        name: String(data.name ?? ""),
-        lastName: typeof rawLastName === "string" ? rawLastName : "",
-        email: String(data.email ?? ""),
-        companyName: typeof data.companyName === "string" ? data.companyName : undefined,
-        plan: (data.plan as Plan) ?? "free",
-        role: (data.role as UserRole) ?? "user",
-        createdAt: (data.createdAt as { toDate?: () => Date })?.toDate?.() ?? new Date(),
-        updatedAt: (data.updatedAt as { toDate?: () => Date })?.toDate?.() ?? new Date(),
-        socialMedias: Array.isArray(data.socialMedias) ? (data.socialMedias as UserProfile["socialMedias"]) : [],
-      };
-    },
-    []
-  );
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {

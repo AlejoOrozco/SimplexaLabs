@@ -11,6 +11,7 @@
   --page-padding-block: 2rem;
   --page-padding-inline: 2rem;
   --page-max-width: 900px;
+  --page-max-width-wide: 1200px;
   --page-max-width-narrow: 480px;
   --page-header-margin-bottom: 1.5rem;
   --page-title-size: 1.5rem;

@@ -1,0 +1,1 @@
+export { MeetingDetailModal } from "./MeetingDetailModal";
