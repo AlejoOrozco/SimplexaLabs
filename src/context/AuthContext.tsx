@@ -12,6 +12,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  signInWithRedirect,
   deleteUser,
   signOut as firebaseSignOut,
   onAuthStateChanged,
@@ -145,7 +146,34 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setError(null);
     try {
       const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
+      let result;
+
+      try {
+        result = await signInWithPopup(auth, provider);
+      } catch (err) {
+        const code =
+          err && typeof err === "object" && "code" in err
+            ? (err as { code?: string }).code
+            : undefined;
+
+        const isMobile =
+          typeof window !== "undefined" &&
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            window.navigator.userAgent || ""
+          );
+
+        if (
+          isMobile &&
+          (code === "auth/popup-blocked" || code === "auth/popup-closed-by-user")
+        ) {
+          await signInWithRedirect(auth, provider);
+          return;
+        }
+        throw err;
+      }
+
+      if (!result) return;
+
       const newUser = result.user;
       const email = newUser.email ?? "";
       const userRef = doc(db, USERS_COLLECTION, newUser.uid);
