@@ -173,9 +173,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
       } else {
         await deleteUser(newUser);
-        const message = "No tienes acceso. Si fuiste invitado, usa el correo correcto. Si no, contacta al administrador.";
+        const message =
+          "No tienes acceso. Si fuiste invitado, usa el correo correcto. Si no, contacta al administrador.";
+        const unauthorizedError = Object.assign(new Error(message), {
+          code: "auth/not-recognized" as const,
+        });
         setError(message);
-        throw new Error(message);
+        throw unauthorizedError;
       }
     } catch (err) {
       const message =

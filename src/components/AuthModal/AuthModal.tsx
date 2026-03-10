@@ -60,12 +60,43 @@ export function AuthModal({ isOpen, onClose }: Props) {
       await signInWithGoogle();
       handleClose();
       navigate("/meetings");
-    } catch {
+    } catch (err) {
+      const code =
+        err && typeof err === "object" && "code" in err
+          ? (err as { code?: string }).code
+          : undefined;
+
+      if (code === "auth/not-recognized") {
+        sileo.error({
+          title: "Acceso no autorizado",
+          description:
+            "No estás reconocido como usuario. Si fuiste invitado, usa el correo con el que te invitaron. Si no, contacta al administrador.",
+        });
+        handleClose();
+        return;
+      }
+
+      if (code === "auth/popup-closed-by-user" || code === "auth/cancelled-popup-request") {
+        sileo.error({
+          title: "Inicio de sesión cancelado",
+          description: "No se completó el inicio de sesión con Google. Intenta de nuevo.",
+        });
+        return;
+      }
+
+      if (code === "auth/popup-blocked") {
+        sileo.error({
+          title: "Ventana bloqueada",
+          description:
+            "Tu navegador bloqueó la ventana de Google. Permite ventanas emergentes o abre esta página en el navegador del sistema y vuelve a intentar.",
+        });
+        return;
+      }
+
       sileo.error({
-        title: "Acceso no autorizado",
-        description: "No estás reconocido como usuario. Si fuiste invitado, usa el correo con el que te invitaron. Si no, contacta al administrador.",
+        title: "Error al iniciar sesión",
+        description: "No se pudo iniciar sesión con Google. Intenta de nuevo.",
       });
-      handleClose();
     }
   }, [signInWithGoogle, handleClose, clearError, navigate]);
 
