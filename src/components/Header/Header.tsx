@@ -20,7 +20,7 @@ export function Header() {
     <header className="header">
       <div className="header__bar">
         <div ref={innerRef} className="header__inner">
-          <HeaderLogo title="SimpLexaLabs" titleRef={titleRef} />
+          <HeaderLogo title="SimpLexaLabs" initials="SLL" titleRef={titleRef} />
           <HeaderCta
             onAuthModalOpen={() => setAuthModalOpen(true)}
             authModalOpen={authModalOpen}

@@ -125,3 +125,36 @@
 .header__login-link:hover {
   color: var(--color-morado-ai);
 }
+
+/* Mobile: compact header to avoid overlap */
+@media (max-width: 768px) {
+  .header__inner {
+    padding: 0 1rem;
+  }
+
+  .header__title {
+    font-size: 1.5rem;
+  }
+
+  .header__cta-wrap--gap {
+    gap: 0.5rem;
+  }
+
+  /* ProfileDropdown: avatar only, hide name/email in header */
+  .header .profile-dropdown__info {
+    display: none;
+  }
+
+  .header .profile-dropdown__trigger {
+    padding: 0.35rem 0.5rem;
+    gap: 0;
+  }
+
+  .header .profile-dropdown__indicator {
+    display: none;
+  }
+
+  .header__login-link {
+    font-size: 0.875rem;
+  }
+}

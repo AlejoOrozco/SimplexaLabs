@@ -7,12 +7,96 @@
   background: rgba(255, 255, 255, 0.9);
   border-right: 1px solid rgba(30, 58, 95, 0.12);
   padding: 1.5rem 0;
+  transition: width 0.2s ease, transform 0.2s ease;
+}
+
+/* Mobile: collapsed = narrow icon bar */
+.sidebar--mobile.sidebar--collapsed {
+  width: 4rem;
+  padding: 0.75rem 0;
+  align-items: center;
+}
+
+.sidebar--mobile.sidebar--collapsed .sidebar__header,
+.sidebar--mobile.sidebar--collapsed .sidebar__link-label {
+  display: none;
+}
+
+.sidebar--mobile.sidebar--collapsed .sidebar__nav {
+  width: 100%;
+  align-items: center;
+}
+
+.sidebar--mobile.sidebar--collapsed .sidebar__link {
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+.sidebar--mobile.sidebar--collapsed .sidebar__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Mobile: expanded = overlay */
+.sidebar__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.sidebar--mobile.sidebar--expanded {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  bottom: 0;
+  z-index: 51;
+  width: 16rem;
+  padding: 1rem 0 1.5rem;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
+}
+
+.sidebar__toggle-row {
+  padding: 0 1rem 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar--collapsed .sidebar__toggle-row {
+  margin-bottom: 0;
+  padding: 0 0.5rem 0.5rem;
+}
+
+.sidebar__toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: none;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--color-azul-electrico);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.sidebar__toggle-btn:hover {
+  background: rgba(37, 99, 235, 0.15);
+  color: var(--color-cta-primary-hover);
 }
 
 .sidebar__header {
   padding: 0 1.25rem 1.25rem;
   border-bottom: 1px solid rgba(30, 58, 95, 0.08);
   margin-bottom: 1rem;
+}
+
+.sidebar--mobile.sidebar--expanded .sidebar__header {
+  padding: 0 1rem 1rem;
 }
 
 .sidebar__welcome {
@@ -46,6 +130,10 @@
   transition: background 0.15s ease, color 0.15s ease;
 }
 
+.sidebar--mobile.sidebar--expanded .sidebar__link {
+  padding: 0.625rem 1rem;
+}
+
 .sidebar__link:hover {
   background: rgba(37, 99, 235, 0.06);
   color: var(--color-text-primary);
@@ -54,6 +142,10 @@
 .sidebar__link--active {
   background: rgba(37, 99, 235, 0.1);
   color: var(--color-azul-electrico);
+}
+
+.sidebar__link-label {
+  white-space: nowrap;
 }
 
 .sidebar__icon {

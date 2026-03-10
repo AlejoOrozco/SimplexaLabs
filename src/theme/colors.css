@@ -40,3 +40,9 @@
   --footer-link: var(--color-azul-electrico);
   --footer-border: rgba(255, 255, 255, 0.08);
 }
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 4rem;
+  }
+}
