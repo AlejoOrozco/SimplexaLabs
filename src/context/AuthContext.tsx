@@ -13,6 +13,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   signInWithRedirect,
+  getRedirectResult,
   deleteUser,
   signOut as firebaseSignOut,
   onAuthStateChanged,
@@ -115,9 +116,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 
   const findPendingInvite = useCallback(async (email: string) => {
+    const normalized = email.trim().toLowerCase();
     const q = query(
       collection(db, INVITES_COLLECTION),
-      where("email", "==", email),
+      where("email", "==", normalized),
       where("status", "==", "pending")
     );
     const snap = await getDocs(q);
@@ -175,7 +177,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (!result) return;
 
       const newUser = result.user;
-      const email = newUser.email ?? "";
+      const email = (newUser.email ?? "").trim().toLowerCase();
       const userRef = doc(db, USERS_COLLECTION, newUser.uid);
       const snap = await getDoc(userRef);
       if (snap.exists()) {
@@ -284,30 +286,72 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      setUser(firebaseUser);
-      if (!firebaseUser) {
-        setProfile(null);
-        setLoading(false);
-        return;
-      }
+    let cancelled = false;
+    const init = async () => {
       try {
-        const userRef = doc(db, USERS_COLLECTION, firebaseUser.uid);
-        const snap = await getDoc(userRef);
-        if (snap.exists()) {
-          const data = snap.data();
-          setProfile(loadProfile(data));
-        } else {
-          setProfile(null);
+        const result = await getRedirectResult(auth);
+        if (cancelled) return;
+        if (result?.user) {
+          const newUser = result.user;
+          const email = (newUser.email ?? "").trim().toLowerCase();
+          const userRef = doc(db, USERS_COLLECTION, newUser.uid);
+          const snap = await getDoc(userRef);
+          if (cancelled) return;
+          if (!snap.exists()) {
+            const inviteDoc = await findPendingInvite(email);
+            if (cancelled) return;
+            if (inviteDoc) {
+              const invite = inviteDoc.data();
+              const { name, lastName } = parseDisplayName(newUser.displayName);
+              await createUserFromInvite(newUser.uid, email, {
+                plan: (invite.plan as string) ?? "free",
+                role: (invite.role as string) ?? "user",
+                name: name || undefined,
+                lastName: lastName || undefined,
+              });
+              await updateDoc(doc(db, INVITES_COLLECTION, inviteDoc.id), {
+                status: "accepted",
+                updatedAt: serverTimestamp(),
+              });
+            } else {
+              await deleteUser(newUser);
+            }
+          }
         }
       } catch {
-        setProfile(null);
-      } finally {
-        setLoading(false);
+        // Redirect result failed or user not recognized; continue to auth listener
       }
-    });
-    return () => unsubscribe();
-  }, [loadProfile]);
+      if (cancelled) return;
+      const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+        setUser(firebaseUser);
+        if (!firebaseUser) {
+          setProfile(null);
+          setLoading(false);
+          return;
+        }
+        try {
+          const userRef = doc(db, USERS_COLLECTION, firebaseUser.uid);
+          const snap = await getDoc(userRef);
+          if (snap.exists()) {
+            const data = snap.data();
+            setProfile(loadProfile(data));
+          } else {
+            setProfile(null);
+          }
+        } catch {
+          setProfile(null);
+        } finally {
+          setLoading(false);
+        }
+      });
+      return unsubscribe;
+    };
+    const unsubPromise = init();
+    return () => {
+      cancelled = true;
+      unsubPromise.then((unsub) => unsub?.());
+    };
+  }, [loadProfile, findPendingInvite, createUserFromInvite]);
 
   const value = useMemo<AuthContextValue>(
     () => ({
