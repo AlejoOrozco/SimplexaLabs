@@ -2,28 +2,12 @@
   position: relative;
   padding: 4rem 1.5rem;
   overflow: hidden;
+  background: transparent;
 }
 
-/* Animated gradient background so liquid glass cards are visible */
+/* Keep global page gradient visible across sections */
 .automation-channels__bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(
-    135deg,
-    #e0f2fe 0%,
-    #f0e7ff 25%,
-    #e0f2fe 50%,
-    #ddd6fe 75%,
-    #e0f2fe 100%
-  );
-  background-size: 400% 400%;
-  animation: automation-channels-bg 15s ease infinite;
-}
-
-@keyframes automation-channels-bg {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  display: none;
 }
 
 .automation-channels__container {

@@ -3,6 +3,8 @@ import { useInView, motion } from 'framer-motion';
 import { CtaBorderWrap } from '../../CtaBorderWrap';
 import { PartnerBadge } from '../../PartnerBadge';
 import { ShimmerText } from '../../ShimmerText';
+import { BackgroundPaths } from '../../ui/background-paths';
+import GradualBlur from '../../ui/GradualBlur';
 import './HeroSection.css';
 
 const hidden = { opacity: 0, y: 24 };
@@ -19,7 +21,7 @@ export function HeroSection() {
 
   return (
     <section id="section-hero" className="hero" ref={ref}>
-      <div className="hero__blob" aria-hidden />
+      <BackgroundPaths className="hero__paths" />
       <div className="hero__container">
         <motion.h1
           className="hero__title"
@@ -88,6 +90,18 @@ export function HeroSection() {
           <PartnerBadge />
         </motion.div>
       </div>
+      <GradualBlur
+        target="page"
+        position="bottom"
+        height="7rem"
+        strength={2}
+        divCount={5}
+        curve="bezier"
+        exponential
+        opacity={1}
+        zIndex={20}
+        className="hero__blur-edge"
+      />
     </section>
   );
 }

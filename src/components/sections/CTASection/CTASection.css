@@ -1,6 +1,6 @@
 .cta-section {
   padding: 4rem 1.5rem;
-  background: var(--color-azul-profundo);
+  background: transparent;
 }
 
 .cta-section__container {
@@ -29,13 +29,13 @@
 }
 
 .cta-section__button-wrap .cta-gradient-fill {
-  background: #fff !important;
-  color: var(--color-azul-electrico) !important;
+  background: rgba(15, 23, 42, 0.72) !important;
+  color: var(--color-text-primary) !important;
 }
 
 .cta-section__button-wrap .cta-gradient-fill:hover {
-  background: var(--color-blanco-limpio) !important;
-  color: var(--color-azul-profundo) !important;
+  background: rgba(34, 211, 238, 0.12) !important;
+  color: var(--color-text-primary) !important;
 }
 
 .cta-section__button {

@@ -4,45 +4,48 @@
  */
 :root {
   /* Brand palette */
-  --color-morado-ai: #7c3aed;
-  --color-azul-profundo: #1e3a5f;
-  --color-azul-electrico: #2563eb;
-  --color-azul-neon: #e0f2fe;
-  --color-blanco-limpio: #f8fafc;
+  --color-morado-ai: #5b5ef4;
+  --color-azul-profundo: #0b0d17;
+  --color-azul-electrico: #22d3ee;
+  --color-azul-neon: #a5a7ff;
+  --color-blanco-limpio: #181c2e;
 
   /* Semantic aliases */
-  --color-text-primary: var(--color-azul-profundo);
-  --color-text-secondary: #64748b;
-  --color-text-muted: #94a3b8;
+  --color-text-primary: #f4f6ff;
+  --color-text-secondary: #c4c9d8;
+  --color-text-muted: #8b92a9;
+  --color-bg-hero-start: #0b0d17;
+  --color-bg-hero-mid: #181c2e;
+  --color-bg-hero-end: #252a40;
   --color-bg-hero: linear-gradient(
     160deg,
-    #bae6fd 0%,
-    #e0f2fe 25%,
-    var(--color-blanco-limpio) 60%,
-    #ffffff 100%
+    var(--color-bg-hero-start) 0%,
+    var(--color-bg-hero-mid) 50%,
+    var(--color-bg-hero-end) 100%
   );
+  --bg-main-gradient: linear-gradient(160deg, #0f172a 0%, #1e1b4b 50%, #1e3a5f 100%);
   --color-bg-section: var(--color-blanco-limpio);
   --color-cta-primary: var(--color-azul-electrico);
-  --color-cta-primary-hover: #1d4ed8;
-  --color-cta-gradient: linear-gradient(135deg, var(--color-azul-electrico) 0%, var(--color-morado-ai) 100%);
+  --color-cta-primary-hover: #3b3dc8;
+  --color-cta-gradient: linear-gradient(135deg, #5b5ef4 0%, #22d3ee 100%);
   --color-accent-error: #dc2626;
 
   /* Header — very subtle blur */
-  --header-backdrop: saturate(80%) blur(5px);
-  --header-height: 5rem;
+  --header-backdrop: blur(20px) saturate(150%);
+  --header-height: 4.5rem;
   /* Subtle noise texture (SVG fractalNoise, optional: replace with url("/noise.png") for a PNG) */
   --header-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
   /* Footer */
-  --footer-bg: #0a1121;
-  --footer-text: rgba(255, 255, 255, 0.9);
-  --footer-muted: rgba(255, 255, 255, 0.6);
+  --footer-bg: #0b0d17;
+  --footer-text: rgba(244, 246, 255, 0.9);
+  --footer-muted: rgba(196, 201, 216, 0.7);
   --footer-link: var(--color-azul-electrico);
   --footer-border: rgba(255, 255, 255, 0.08);
 }
 
 @media (max-width: 768px) {
   :root {
-    --header-height: 4rem;
+    --header-height: 3.75rem;
   }
 }

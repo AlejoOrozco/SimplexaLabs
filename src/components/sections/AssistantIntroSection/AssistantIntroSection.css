@@ -1,6 +1,6 @@
 .assistant-intro {
   padding: 4rem 1.5rem;
-  background: var(--color-bg-section);
+  background: transparent;
 }
 
 .assistant-intro__container {

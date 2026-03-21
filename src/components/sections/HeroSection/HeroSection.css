@@ -5,45 +5,20 @@
   align-items: center;
   justify-content: center;
   padding: calc(var(--header-height) + 3rem) 1.5rem 4rem;
-  background: var(--color-bg-hero);
+  background: transparent;
   overflow: hidden;
 }
 
-/* Animated blurred orb that moves around the hero */
-.hero__blob {
-  position: absolute;
-  width: min(80vw, 480px);
-  height: min(80vw, 480px);
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(186, 230, 253, 0.85) 0%,
-    rgba(224, 242, 254, 0.6) 40%,
-    rgba(248, 250, 252, 0.3) 70%,
-    transparent 100%
-  );
-  filter: blur(24px);
-  pointer-events: none;
-  animation: hero-blob-move 25s ease-in-out infinite;
+.hero__paths {
+  opacity: 1;
+  mask-image: radial-gradient(circle at 50% 44%, black 0%, black 58%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at 50% 44%, black 0%, black 58%, transparent 100%);
+  filter: drop-shadow(0 0 14px rgba(91, 94, 244, 0.28))
+    drop-shadow(0 0 18px rgba(34, 211, 238, 0.24));
 }
 
-@keyframes hero-blob-move {
-  0%, 100% {
-    top: -15%;
-    left: -10%;
-  }
-  25% {
-    top: 10%;
-    left: 60%;
-  }
-  50% {
-    top: 60%;
-    left: 20%;
-  }
-  75% {
-    top: 20%;
-    left: -5%;
-  }
+.hero__blur-edge {
+  z-index: 2;
 }
 
 .hero__container {

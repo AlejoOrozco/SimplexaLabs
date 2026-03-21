@@ -23,10 +23,10 @@
   gap: 0.6rem;
   padding: 0.75rem 0.9rem;
   border-radius: 999px;
-  border: 1px solid rgba(30, 58, 95, 0.14);
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: saturate(130%) blur(6px);
-  -webkit-backdrop-filter: saturate(130%) blur(6px);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: saturate(145%) blur(18px);
+  -webkit-backdrop-filter: saturate(145%) blur(18px);
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
   color: var(--color-text-primary);
   cursor: pointer;
@@ -40,10 +40,10 @@
 .sales-assistant__panel {
   width: min(360px, calc(100vw - 32px));
   height: min(560px, calc(100vh - 32px));
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: saturate(140%) blur(10px);
-  -webkit-backdrop-filter: saturate(140%) blur(10px);
-  border: 1px solid rgba(30, 58, 95, 0.14);
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: saturate(145%) blur(18px);
+  -webkit-backdrop-filter: saturate(145%) blur(18px);
+  border: 1px solid rgba(148, 163, 184, 0.22);
   border-radius: 18px;
   box-shadow: 0 16px 48px rgba(15, 23, 42, 0.22);
   overflow: hidden;
@@ -56,7 +56,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.85rem 0.9rem;
-  border-bottom: 1px solid rgba(30, 58, 95, 0.08);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
 }
 
 .sales-assistant__title {
@@ -91,8 +91,8 @@
   width: 34px;
   height: 34px;
   border-radius: 10px;
-  border: 1px solid rgba(30, 58, 95, 0.12);
-  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(15, 23, 42, 0.66);
   cursor: pointer;
   color: var(--color-text-primary);
 }
@@ -125,12 +125,12 @@
   font-size: 0.9rem;
   line-height: 1.35;
   white-space: pre-wrap;
-  border: 1px solid rgba(30, 58, 95, 0.1);
+  border: 1px solid rgba(148, 163, 184, 0.22);
   box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
 }
 
 .sales-assistant__msg--assistant .sales-assistant__bubble {
-  background: #fff;
+  background: rgba(15, 23, 42, 0.82);
   color: var(--color-text-primary);
 }
 
@@ -142,8 +142,8 @@
 
 .sales-assistant__composer {
   padding: 0.85rem 0.9rem;
-  border-top: 1px solid rgba(30, 58, 95, 0.08);
-  background: rgba(248, 250, 252, 0.7);
+  border-top: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(15, 23, 42, 0.8);
 }
 
 .sales-assistant__row {
@@ -157,15 +157,15 @@
   height: 40px;
   padding: 0 0.75rem;
   border-radius: 12px;
-  border: 1px solid rgba(30, 58, 95, 0.14);
-  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: rgba(15, 23, 42, 0.9);
   color: var(--color-text-primary);
   outline: none;
 }
 
 .sales-assistant__input:focus {
-  border-color: rgba(37, 99, 235, 0.45);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+  border-color: rgba(34, 211, 238, 0.52);
+  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.16);
 }
 
 .sales-assistant__send {

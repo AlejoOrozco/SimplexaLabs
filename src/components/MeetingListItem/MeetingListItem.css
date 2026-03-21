@@ -4,8 +4,8 @@
   align-items: center;
   gap: 0.5rem 1rem;
   padding: 0.75rem 1rem;
-  background: #fff;
-  border: 1px solid rgba(30, 58, 95, 0.12);
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.22);
   border-radius: 8px;
   font-size: 0.875rem;
 }
@@ -28,13 +28,13 @@
 }
 
 .meeting-list-item__status--pending {
-  background: rgba(234, 179, 8, 0.15);
-  color: #a16207;
+  background: rgba(217, 119, 6, 0.18);
+  color: #fbbf24;
 }
 
 .meeting-list-item__status--confirmed {
-  background: rgba(34, 197, 94, 0.15);
-  color: #15803d;
+  background: rgba(74, 222, 128, 0.2);
+  color: #86efac;
 }
 
 .meeting-list-item__status--cancelled {

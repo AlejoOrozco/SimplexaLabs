@@ -1,6 +1,6 @@
 /**
  * Liquid glass card - shadow and layout from Kokonut UI style.
- * Works in light mode; dark mode can be added via .liquid-glass-card--dark if needed.
+ * Dark glass variant aligned with redesign tokens.
  */
 
 .liquid-glass-card__svg-filter {
@@ -15,9 +15,9 @@
   position: relative;
   overflow: hidden;
   border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(2px);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(18px) saturate(145%);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -37,22 +37,16 @@
   padding: 0;
 }
 
-/* Glass shadow - light theme */
+/* Glass shadow - dark theme */
 .liquid-glass-card__shadow {
   pointer-events: none;
   position: absolute;
   inset: 0;
   border-radius: 12px;
   box-shadow:
-    0 0 6px rgba(0, 0, 0, 0.03),
-    0 2px 6px rgba(0, 0, 0, 0.08),
-    inset 3px 3px 0.5px -3px rgba(255, 255, 255, 0.4),
-    inset -3px -3px 0.5px -3px rgba(0, 0, 0, 0.08),
-    inset 1px 1px 1px -0.5px rgba(255, 255, 255, 0.25),
-    inset -1px -1px 1px -0.5px rgba(0, 0, 0, 0.06),
-    inset 0 0 6px 6px rgba(0, 0, 0, 0.04),
-    inset 0 0 2px 2px rgba(0, 0, 0, 0.02),
-    0 0 12px rgba(255, 255, 255, 0.15);
+    0 4px 24px rgba(0, 0, 0, 0.28),
+    0 14px 44px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .liquid-glass-card__backdrop {
@@ -78,7 +72,7 @@
   background: linear-gradient(
     to right,
     transparent,
-    rgba(0, 0, 0, 0.03),
+    rgba(165, 167, 255, 0.12),
     transparent
   );
   opacity: 0;
