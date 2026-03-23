@@ -17,6 +17,11 @@
   --page-max-width-narrow: 480px;
   --page-header-margin-bottom: 1.5rem;
   --page-title-size: 1.5rem;
+
+  /* Sileo: cyan-forward states to match chat widget (dark pill via theme="light") */
+  --sileo-state-success: oklch(0.82 0.11 210);
+  --sileo-state-error: oklch(0.72 0.2 25);
+  --sileo-state-info: oklch(0.78 0.1 210);
 }
 
 /* Slightly larger toast typography */
@@ -27,6 +32,15 @@
   text-transform: none;
 }
 
+[data-sileo-viewport][data-theme="light"] [data-sileo-description] {
+  color: var(--color-text-secondary);
+}
+
+[data-sileo-toast][data-state="success"] [data-sileo-title][data-state="success"] {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
 *,
 *::before,
 *::after {
@@ -35,6 +49,10 @@
 
 html {
   scroll-behavior: smooth;
+  min-height: 100%;
+  background: var(--bg-main-gradient);
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 body {
@@ -81,4 +99,5 @@ h1, h2, h3, h4, h5, h6 {
 
 #root {
   min-height: 100vh;
+  background: transparent;
 }

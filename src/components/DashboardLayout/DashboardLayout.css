@@ -12,7 +12,7 @@
   min-width: 0;
   min-height: 0;
   overflow-y: auto;
-  background: var(--color-bg-section);
+  background: transparent;
   padding-left: var(--page-padding-inline);
   padding-right: var(--page-padding-inline);
   box-sizing: border-box;

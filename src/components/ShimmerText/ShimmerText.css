@@ -1,12 +1,13 @@
+/* White ↔ cyan only (no purple) so hero titles stay readable on dark purple bg */
 .shimmer-text {
   display: inline-block;
   background-image: linear-gradient(
     90deg,
-    var(--color-text-primary) 0%,
-    var(--color-azul-electrico) 30%,
-    var(--color-morado-ai) 50%,
-    var(--color-azul-electrico) 70%,
-    var(--color-text-primary) 100%
+    #ffffff 0%,
+    #22d3ee 28%,
+    #67e8f9 50%,
+    #22d3ee 72%,
+    #f4f6ff 100%
   );
   background-size: 200% 100%;
   -webkit-background-clip: text;

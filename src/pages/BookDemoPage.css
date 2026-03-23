@@ -1,7 +1,7 @@
 .book-demo-page {
   min-height: 100vh;
   padding-top: var(--header-height);
-  background: var(--color-bg-section);
+  background: transparent;
 }
 
 .book-demo-main {

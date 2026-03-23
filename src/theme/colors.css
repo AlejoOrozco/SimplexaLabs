@@ -24,10 +24,16 @@
     var(--color-bg-hero-end) 100%
   );
   --bg-main-gradient: linear-gradient(160deg, #0f172a 0%, #1e1b4b 50%, #1e3a5f 100%);
-  --color-bg-section: var(--color-blanco-limpio);
+  /* One continuous page background (body gradient); sections stay transparent */
+  --color-bg-section: transparent;
+  /* Subtle glass tint for cards/panels (gradient still visible underneath) */
+  --glass-tint: rgba(255, 255, 255, 0.06);
+  --glass-tint-strong: rgba(255, 255, 255, 0.1);
   --color-cta-primary: var(--color-azul-electrico);
   --color-cta-primary-hover: #3b3dc8;
   --color-cta-gradient: linear-gradient(135deg, #5b5ef4 0%, #22d3ee 100%);
+  /* Header logo/title only: white → cyan (no indigo/purple) for contrast on purple page bg */
+  --color-header-title-gradient: linear-gradient(135deg, #ffffff 0%, #22d3ee 100%);
   --color-accent-error: #dc2626;
 
   /* Header — very subtle blur */

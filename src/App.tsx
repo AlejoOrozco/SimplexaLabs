@@ -66,7 +66,7 @@ function App() {
       <Toaster
         position="bottom-left"
         offset={{ bottom: 18, left: 18 }}
-        theme="system"
+        theme="light"
       />
       <BrowserRouter>
         <AuthProvider>
